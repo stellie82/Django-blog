@@ -1,5 +1,5 @@
 from django.contrib import admin
-from blogging.models import Post, Category, Comment
+from blogging.models import Post, Category
 
 
 @admin.register(Category)
@@ -14,6 +14,3 @@ class CategoryInline(admin.TabularInline):
 @admin.register(Post)
 class PostAdmin(admin.ModelAdmin):
     inlines = [CategoryInline]
-
-
-admin.site.register(Comment)

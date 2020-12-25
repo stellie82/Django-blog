@@ -24,12 +24,3 @@ class Category(models.Model):
     name = models.CharField(max_length=128)
     description = models.TextField(blank=True)
     posts = models.ManyToManyField(Post, blank=True, related_name='categories')
-
-
-class Comment(models.Model):
-    def __str__(self):
-        return self.title
-
-    title = models.CharField(max_length=100)
-    text = models.CharField(max_length=255)
-    notes = models.CharField(max_length=255)

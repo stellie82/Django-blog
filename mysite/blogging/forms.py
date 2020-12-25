@@ -1,8 +1,8 @@
 from django.forms import ModelForm
-from blogging.models import Comment
+from blogging.models import Post
 
 
-class CommentForm(ModelForm):
+class PostForm(ModelForm):
     class Meta:
-        model = Comment
-        fields = ['title', 'text', 'notes']
+        model = Post
+        fields = ['title', 'text', 'author', 'published_date']

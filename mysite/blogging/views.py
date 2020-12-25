@@ -4,7 +4,7 @@ from django.template import loader
 from django.utils import timezone
 from django import forms
 from blogging.models import Post
-from blogging.forms import CommentForm
+from blogging.forms import PostForm
 
 
 def list_view(request):
@@ -24,14 +24,15 @@ def detail_view(request, post_id):
     return render(request, 'blogging/detail.html', context)
 
 
-def add_model(request):
+def create_post(request):
+    print('model form request test')
     if request.method == 'POST':
-        form = CommentForm(request.POST)
+        form = PostForm(request.POST)
         if form.is_valid():
             model_instance = form.save(commit=False)
             model_instance.timestamp = timezone.now()
             model_instance.save()
             return redirect('/')
     else:
-        form = CommentForm()
-        return render(request, 'comment_template.html', {'form': form})
+        form = PostForm()
+        return render(request, 'blogging/post.html', {'form': form})
